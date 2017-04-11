@@ -1,5 +1,5 @@
 var withinBounds = function(x, y) {
-  return (x > 8 || x < 0 || y > 8 || y < 0) ? false : true;
+  return (x <= 8 && x >= 0 && y <= 8 && y >= 0);
 };
 
 var moves = {
