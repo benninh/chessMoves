@@ -1,12 +1,19 @@
-var piece = {
+var whitePlayer = {};
+var blackPlayer = {};
+var pieces = {
               'pawn': 'pawn',
               'rook': 'rook',
               'knight': 'knight',
               'bishop': 'bishop',
               'queen': 'queen',
               'king': 'king'
-            };
-
+             };
+var colors = {
+               0: 'background-color: #E1CA96',
+               1: 'background-color: #573D1C'
+             };
+var colorTracker = 0;
+// columns (a - h) left to right
 var columns = {
                 1: 'a',
                 2: 'b',
@@ -17,16 +24,9 @@ var columns = {
                 7: 'g',
                 8: 'h',
               };
-
-var board = document.getElementById('board');
-// columns (a - h) left to right
 // rows (8 - 1) top to bottom
 
-var colors = {
-               0: 'background-color: #E1CA96',
-               1: 'background-color: #573D1C'
-             }
-var colorTracker = 0;
+var board = document.getElementById('board');
 
 for (var i = 8; i >= 1; i--) {
   var row = document.createElement('div');
@@ -58,7 +58,3 @@ for (var i = 8; i >= 1; i--) {
   }
   board.appendChild(row);
 }
-// var row = document.createElement('div');
-// row.innerText = 'hello';
-
-// board.appendChild(row);
