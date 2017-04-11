@@ -2,8 +2,6 @@ var withinBounds = function(x, y) {
   return (x > 8 || x < 1 || y > 'h' || y < 'a') ? false : true;
 };
 
-var checkUp, checkDown, checkLeft, checkRight, checkUpperRightDiag, checkUpperLeftDiag, checkLowerRightDiag, checkLowerLeftDiag;
-
 var highlightPiece = function(x, y) {
   document.getElementById(y + x).setAttribute('style', 'background-color: #E5D352');
 };
@@ -58,7 +56,7 @@ var moves = {
       highlightMoves(x, currentColumn);
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) + 1);
     }
-    
+
     // check left
     currentColumn = String.fromCharCode(y.charCodeAt(0) - 1);
     while (withinBounds(x, currentColumn)) {
