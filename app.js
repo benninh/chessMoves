@@ -32,7 +32,7 @@ for (var i = 8; i >= 1; i--) {
   var row = document.createElement('div');
   row.className = 'row';
   
-  // intialize counter to alternate colors
+  // alternate the starting color of the row
   if (i % 2) {
     colorTracker = 1;
   } else {
@@ -42,6 +42,8 @@ for (var i = 8; i >= 1; i--) {
   for (var j = 1; j <= 8; j++) {
     var column = document.createElement('div');
     column.className = 'col';
+    column.id = columns[j] + i;
+    column.innerText = columns[j] + i;
 
     // set colors of the board
     if (colorTracker === 0) {
@@ -51,8 +53,6 @@ for (var i = 8; i >= 1; i--) {
       column.setAttribute('style', colors[colorTracker]);
       colorTracker--;
     }
-
-    column.innerText = columns[j] + i;
 
     row.appendChild(column);
   }
