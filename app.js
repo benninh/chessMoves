@@ -51,7 +51,7 @@ for (var i = 8; i >= 1; i--) {
   board.appendChild(row);
 }
 
-// place pieces to check
+// place pieces to test functionality
 document.getElementById('e5').innerText = 'wQ';
 document.getElementById('g5').innerText = 'bP';
 document.getElementById('b5').innerText = 'bP';
@@ -67,4 +67,5 @@ document.getElementById('c3').innerText = 'wP';
 document.getElementById('d7').innerText = 'bR';
 
 
-moves.queen(5, 'e', 'w');
+// moves.queen(5, 'e', 'w');
+moves.knight(6, 'g', 'w');
