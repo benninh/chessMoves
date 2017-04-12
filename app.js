@@ -65,7 +65,9 @@ document.getElementById('g6').innerText = 'wKn';
 document.getElementById('e4').innerText = 'wP';
 document.getElementById('c3').innerText = 'wP';
 document.getElementById('d7').innerText = 'bR';
+document.getElementById('c2').innerText = 'bK';
 
 
 // moves.queen(5, 'e', 'w');
-moves.knight(6, 'g', 'w');
+// moves.knight(6, 'g', 'w');
+moves.king(2, 'c', 'b');

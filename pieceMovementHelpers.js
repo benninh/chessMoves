@@ -16,6 +16,19 @@ var checkPieceColor = function(x, y) {
   return document.getElementById(y + x).innerText[0];
 };
 
+var kingMoves = function(x, y) {
+  if (withinBounds(x, y)) {
+    // ** TODO: if slot is not taken by ally piece
+    if (checkCellForPiece(upOne, currentColumn)) {
+      if (checkPieceColor(upOne, currentColumn) !== player) {
+        highlightMoves(upOne, currentColumn);
+      }
+    } else {
+      highlightMoves(upOne, currentColumn);
+    }
+  }
+}
+
 var moves = {
   rook: function(x, y, player) {
     // xy is current position
@@ -276,7 +289,34 @@ var moves = {
   },
 
   king: function(x, y, player) {
+    var upOne = x + 1;
+    var downOne = x - 1;
 
+    var currentColumn = String.fromCharCode(y.charCodeAt(0));
+    var leftOne = String.fromCharCode(y.charCodeAt(0) - 1);
+    var rightOne = String.fromCharCode(y.charCodeAt(0) + 1);
+
+    var kingMoves = function(x, y) {
+      if (withinBounds(x, y)) {
+        // ** TODO: if slot is not taken by ally piece
+        if (checkCellForPiece(x, y)) {
+          if (checkPieceColor(x, y) !== player) {
+            highlightMoves(x, y);
+          }
+        } else {
+          highlightMoves(x, y);
+        }
+      }
+    }
+
+    kingMoves(upOne, currentColumn);
+    kingMoves(upOne, leftOne);
+    kingMoves(x, leftOne);
+    kingMoves(downOne, leftOne);
+    kingMoves(downOne, currentColumn);
+    kingMoves(downOne, rightOne);
+    kingMoves(x, rightOne);
+    kingMoves(upOne, rightOne);
   },
 
   pawn: function(x, y, player) {
