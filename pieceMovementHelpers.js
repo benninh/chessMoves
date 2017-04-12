@@ -25,8 +25,7 @@ var moves = {
     // check down
     var currentRow = x - 1;
     while (withinBounds(currentRow, y)) {
-      temp = document.getElementById(y + currentRow);
-      if (temp.innerText !== y + currentRow) {
+      if (checkCellForPiece(currentRow, y)) {
 
         // ** TODO: if slot is not taken by ally piece
 
@@ -42,8 +41,7 @@ var moves = {
     // check up
     currentRow = x + 1;
     while (withinBounds(currentRow, y)) {
-      temp = document.getElementById(y + currentRow);
-      if (temp.innerText !== y + currentRow) {
+      if (checkCellForPiece(currentRow, y)) {
 
         // ** TODO: if slot is not taken by ally piece
 
@@ -59,8 +57,7 @@ var moves = {
     // check right
     var currentColumn = String.fromCharCode(y.charCodeAt(0) + 1);
     while (withinBounds(x, currentColumn)) {
-      temp = document.getElementById(currentColumn + x);
-      if (temp.innerText !== currentColumn + x) {
+      if (checkCellForPiece(x, currentColumn)) {
 
         // ** TODO: if slot is not taken by ally piece
 
@@ -76,8 +73,7 @@ var moves = {
     // check left
     currentColumn = String.fromCharCode(y.charCodeAt(0) - 1);
     while (withinBounds(x, currentColumn)) {
-      temp = document.getElementById(currentColumn + x);
-      if (temp.innerText !== currentColumn + x) {
+      if (checkCellForPiece(x, currentColumn)) {
 
         // ** TODO: if slot is not taken by ally piece
 
@@ -99,8 +95,7 @@ var moves = {
     var currentRow = x + 1;
     var currentColumn = String.fromCharCode(y.charCodeAt(0) + 1);
     while (withinBounds(currentRow, currentColumn)) {
-      temp = document.getElementById(currentColumn + currentRow);
-      if (temp.innerText !== currentColumn + currentRow) {
+      if (checkCellForPiece(currentRow, currentColumn)) {
         
         // ** TODO: if slot is not taken by ally piece
 
@@ -118,8 +113,7 @@ var moves = {
     currentRow = x - 1;
     currentColumn = String.fromCharCode(y.charCodeAt(0) + 1);
     while (withinBounds(currentRow, currentColumn)) {
-      temp = document.getElementById(currentColumn + currentRow);
-      if (temp.innerText !== currentColumn + currentRow) {
+      if (checkCellForPiece(currentRow, currentColumn)) {
 
         // ** TODO: if slot is not taken by ally piece
 
@@ -137,8 +131,7 @@ var moves = {
     currentRow = x - 1;
     currentColumn = String.fromCharCode(y.charCodeAt(0) - 1);
     while (withinBounds(currentRow, currentColumn)) {
-      temp = document.getElementById(currentColumn + currentRow);
-      if (temp.innerText !== currentColumn + currentRow) {
+      if (checkCellForPiece(currentRow, currentColumn)) {
 
         // ** TODO: if slot is not taken by ally piece
 
@@ -156,8 +149,7 @@ var moves = {
     currentRow = x + 1;
     currentColumn = String.fromCharCode(y.charCodeAt(0) - 1);
     while (withinBounds(currentRow, currentColumn)) {
-      temp = document.getElementById(currentColumn + currentRow);
-      if (temp.innerText !== currentColumn + currentRow) {
+      if (checkCellForPiece(currentRow, currentColumn)) {
 
         // ** TODO: if slot is not taken by ally piece
 
@@ -198,47 +190,88 @@ var moves = {
           highlightMoves(upTwo, leftOne);
         }
       } else {
-          console.log('this one');
         highlightMoves(upTwo, leftOne);
       }
     }
     // up 2 right 1
     if (withinBounds(upTwo, rightOne)) {
       // ** TODO: if slot is not taken by ally piece
-      highlightMoves(upTwo, rightOne);
+      if (checkCellForPiece(upTwo, rightOne)) {
+        if (checkPieceColor(upTwo, rightOne) !== player) {
+          highlightMoves(upTwo, rightOne);
+        }
+      } else {
+        highlightMoves(upTwo, rightOne);
+      }
     }
 
     // down 2 left 1
     if (withinBounds(downTwo, leftOne)) {
       // ** TODO: if slot is not taken by ally piece
-      highlightMoves(downTwo, leftOne);
+      if (checkCellForPiece(downTwo, leftOne)) {
+        if (checkPieceColor(downTwo, leftOne) !== player) {
+          highlightMoves(downTwo, leftOne);
+        }
+      } else {
+        highlightMoves(downTwo, leftOne);
+      }
     }
     // down 2 right 1
     if (withinBounds(downTwo, rightOne)) {
       // ** TODO: if slot is not taken by ally piece
-      highlightMoves(downTwo, rightOne);
+      if (checkCellForPiece(downTwo, rightOne)) {
+        if (checkPieceColor(downTwo, rightOne) !== player) {
+          highlightMoves(downTwo, rightOne);
+        }
+      } else {
+        highlightMoves(downTwo, rightOne);
+      }
     }
     
     // up 1 right 2
     if (withinBounds(upOne, rightTwo)) {
       // ** TODO: if slot is not taken by ally piece
-      highlightMoves(upOne, rightTwo);
+      if (checkCellForPiece(upOne, rightTwo)) {
+        if (checkPieceColor(upOne, rightTwo) !== player) {
+          highlightMoves(upOne, rightTwo);
+        }
+      } else {
+        highlightMoves(upOne, rightTwo);
+      }
     }
     // down 1 right 2
     if (withinBounds(downOne, rightTwo)) {
       // ** TODO: if slot is not taken by ally piece
-      highlightMoves(downOne, rightTwo);
+      if (checkCellForPiece(downOne, rightTwo)) {
+        if (checkPieceColor(downOne, rightTwo) !== player) {
+          highlightMoves(downOne, rightTwo);
+        }
+      } else {
+        highlightMoves(downOne, rightTwo);
+      }
     }
     
     // up 1 left 2
     if (withinBounds(upOne, leftTwo)) {
       // ** TODO: if slot is not taken by ally piece
-      highlightMoves(upOne, leftTwo);
+      if (checkCellForPiece(upOne, leftTwo)) {
+        if (checkPieceColor(upOne, leftTwo) !== player) {
+          highlightMoves(upOne, leftTwo);
+        }
+      } else {
+        highlightMoves(upOne, leftTwo);
+      }
     }
     // down 1 left 2
     if (withinBounds(downOne, leftTwo)) {
       // ** TODO: if slot is not taken by ally piece
-      highlightMoves(downOne, leftTwo);
+      if (checkCellForPiece(downOne, leftTwo)) {
+        if (checkPieceColor(downOne, leftTwo) !== player) {
+          highlightMoves(downOne, leftTwo);
+        }
+      } else {
+        highlightMoves(downOne, leftTwo);
+      }
     }
   },
 
