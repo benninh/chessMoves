@@ -18,7 +18,6 @@ var checkPieceColor = function(x, y) {
 
 var kingMoves = function(x, y) {
   if (withinBounds(x, y)) {
-    // ** TODO: if slot is not taken by ally piece
     if (checkCellForPiece(upOne, currentColumn)) {
       if (checkPieceColor(upOne, currentColumn) !== player) {
         highlightMoves(upOne, currentColumn);
@@ -35,13 +34,10 @@ var moves = {
     highlightPiece(x, y);
     var temp = null;
 
-    // check down
+    // down
     var currentRow = x - 1;
     while (withinBounds(currentRow, y)) {
       if (checkCellForPiece(currentRow, y)) {
-
-        // ** TODO: if slot is not taken by ally piece
-
         if (checkPieceColor(currentRow, y) !== player) {
           highlightMoves(currentRow, y);
         }
@@ -51,13 +47,10 @@ var moves = {
       currentRow--;
     }
 
-    // check up
+    // up
     currentRow = x + 1;
     while (withinBounds(currentRow, y)) {
       if (checkCellForPiece(currentRow, y)) {
-
-        // ** TODO: if slot is not taken by ally piece
-
         if (checkPieceColor(currentRow, y) !== player) {
           highlightMoves(currentRow, y);
         }
@@ -67,13 +60,10 @@ var moves = {
       currentRow++;
     }
 
-    // check right
+    // right
     var currentColumn = String.fromCharCode(y.charCodeAt(0) + 1);
     while (withinBounds(x, currentColumn)) {
       if (checkCellForPiece(x, currentColumn)) {
-
-        // ** TODO: if slot is not taken by ally piece
-
         if (checkPieceColor(x, currentColumn) !== player) {
           highlightMoves(x, currentColumn);
         }
@@ -83,13 +73,10 @@ var moves = {
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) + 1);
     }
 
-    // check left
+    // left
     currentColumn = String.fromCharCode(y.charCodeAt(0) - 1);
     while (withinBounds(x, currentColumn)) {
       if (checkCellForPiece(x, currentColumn)) {
-
-        // ** TODO: if slot is not taken by ally piece
-
         if (checkPieceColor(x, currentColumn) !== player) {
           highlightMoves(x, currentColumn);         
         }
@@ -104,14 +91,11 @@ var moves = {
     highlightPiece(x, y);
     var temp = null;
 
-    // check upper right diagonal
+    // upper right diagonal
     var currentRow = x + 1;
     var currentColumn = String.fromCharCode(y.charCodeAt(0) + 1);
     while (withinBounds(currentRow, currentColumn)) {
       if (checkCellForPiece(currentRow, currentColumn)) {
-        
-        // ** TODO: if slot is not taken by ally piece
-
         if (checkPieceColor(currentRow, currentColumn) !== player) {
           highlightMoves(currentRow, currentColumn);
         }
@@ -122,14 +106,11 @@ var moves = {
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) + 1);;
     }
 
-    // check lower right diagonal
+    // lower right diagonal
     currentRow = x - 1;
     currentColumn = String.fromCharCode(y.charCodeAt(0) + 1);
     while (withinBounds(currentRow, currentColumn)) {
       if (checkCellForPiece(currentRow, currentColumn)) {
-
-        // ** TODO: if slot is not taken by ally piece
-
         if (checkPieceColor(currentRow, currentColumn) !== player) {
           highlightMoves(currentRow, currentColumn);
         }
@@ -140,14 +121,11 @@ var moves = {
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) + 1);;
     }
 
-    // check lower left diagonal
+    // lower left diagonal
     currentRow = x - 1;
     currentColumn = String.fromCharCode(y.charCodeAt(0) - 1);
     while (withinBounds(currentRow, currentColumn)) {
       if (checkCellForPiece(currentRow, currentColumn)) {
-
-        // ** TODO: if slot is not taken by ally piece
-
         if (checkPieceColor(currentRow, currentColumn) !== player) {
           highlightMoves(currentRow, currentColumn);
         }
@@ -158,14 +136,11 @@ var moves = {
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) - 1);
     }
 
-    // check upper left diagonal
+    // upper left diagonal
     currentRow = x + 1;
     currentColumn = String.fromCharCode(y.charCodeAt(0) - 1);
     while (withinBounds(currentRow, currentColumn)) {
       if (checkCellForPiece(currentRow, currentColumn)) {
-
-        // ** TODO: if slot is not taken by ally piece
-
         if (checkPieceColor(currentRow, currentColumn) !== player) {
           highlightMoves(currentRow, currentColumn);
         }
@@ -197,7 +172,6 @@ var moves = {
 
     // up 2 left 1
     if (withinBounds(upTwo, leftOne)) {
-      // ** TODO: if slot is not taken by ally piece
       if (checkCellForPiece(upTwo, leftOne)) {
         if (checkPieceColor(upTwo, leftOne) !== player) {
           highlightMoves(upTwo, leftOne);
@@ -208,7 +182,6 @@ var moves = {
     }
     // up 2 right 1
     if (withinBounds(upTwo, rightOne)) {
-      // ** TODO: if slot is not taken by ally piece
       if (checkCellForPiece(upTwo, rightOne)) {
         if (checkPieceColor(upTwo, rightOne) !== player) {
           highlightMoves(upTwo, rightOne);
@@ -220,7 +193,6 @@ var moves = {
 
     // down 2 left 1
     if (withinBounds(downTwo, leftOne)) {
-      // ** TODO: if slot is not taken by ally piece
       if (checkCellForPiece(downTwo, leftOne)) {
         if (checkPieceColor(downTwo, leftOne) !== player) {
           highlightMoves(downTwo, leftOne);
@@ -231,7 +203,6 @@ var moves = {
     }
     // down 2 right 1
     if (withinBounds(downTwo, rightOne)) {
-      // ** TODO: if slot is not taken by ally piece
       if (checkCellForPiece(downTwo, rightOne)) {
         if (checkPieceColor(downTwo, rightOne) !== player) {
           highlightMoves(downTwo, rightOne);
@@ -243,7 +214,6 @@ var moves = {
     
     // up 1 right 2
     if (withinBounds(upOne, rightTwo)) {
-      // ** TODO: if slot is not taken by ally piece
       if (checkCellForPiece(upOne, rightTwo)) {
         if (checkPieceColor(upOne, rightTwo) !== player) {
           highlightMoves(upOne, rightTwo);
@@ -254,7 +224,6 @@ var moves = {
     }
     // down 1 right 2
     if (withinBounds(downOne, rightTwo)) {
-      // ** TODO: if slot is not taken by ally piece
       if (checkCellForPiece(downOne, rightTwo)) {
         if (checkPieceColor(downOne, rightTwo) !== player) {
           highlightMoves(downOne, rightTwo);
@@ -266,7 +235,6 @@ var moves = {
     
     // up 1 left 2
     if (withinBounds(upOne, leftTwo)) {
-      // ** TODO: if slot is not taken by ally piece
       if (checkCellForPiece(upOne, leftTwo)) {
         if (checkPieceColor(upOne, leftTwo) !== player) {
           highlightMoves(upOne, leftTwo);
@@ -277,7 +245,6 @@ var moves = {
     }
     // down 1 left 2
     if (withinBounds(downOne, leftTwo)) {
-      // ** TODO: if slot is not taken by ally piece
       if (checkCellForPiece(downOne, leftTwo)) {
         if (checkPieceColor(downOne, leftTwo) !== player) {
           highlightMoves(downOne, leftTwo);
@@ -298,7 +265,6 @@ var moves = {
 
     var kingMoves = function(x, y) {
       if (withinBounds(x, y)) {
-        // ** TODO: if slot is not taken by ally piece
         if (checkCellForPiece(x, y)) {
           if (checkPieceColor(x, y) !== player) {
             highlightMoves(x, y);
