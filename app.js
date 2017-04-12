@@ -1,14 +1,6 @@
 var whitePlayer = {};
 var blackPlayer = {};
-var pieces = {
-              'pawn': 'pawn',
-              'rook': 'rook',
-              'knight': 'knight',
-              'bishop': 'bishop',
-              'queen': 'queen',
-              'king': 'king'
-             };
-var colors = {
+var boardColors = {
                0: 'background-color: #E1CA96',
                1: 'background-color: #573D1C'
              };
@@ -45,12 +37,12 @@ for (var i = 8; i >= 1; i--) {
     column.id = columns[j] + i;
     column.innerText = columns[j] + i;
 
-    // set colors of the board
+    // set boardColors of the board
     if (colorTracker === 0) {
-      column.setAttribute('style', colors[colorTracker]);
+      column.setAttribute('style', boardColors[colorTracker]);
       colorTracker++;
     } else {
-      column.setAttribute('style', colors[colorTracker]);
+      column.setAttribute('style', boardColors[colorTracker]);
       colorTracker--;
     }
 
@@ -58,3 +50,21 @@ for (var i = 8; i >= 1; i--) {
   }
   board.appendChild(row);
 }
+
+// place pieces to check
+document.getElementById('e5').innerText = 'wQ';
+document.getElementById('g5').innerText = 'bP';
+document.getElementById('b5').innerText = 'bP';
+document.getElementById('e2').innerText = 'bP';
+document.getElementById('e7').innerText = 'bP';
+document.getElementById('g7').innerText = 'bP';
+document.getElementById('g3').innerText = 'bP';
+document.getElementById('b2').innerText = 'bP';
+document.getElementById('c7').innerText = 'bP';
+document.getElementById('g6').innerText = 'wKn';
+document.getElementById('e4').innerText = 'wP';
+document.getElementById('c3').innerText = 'wP';
+document.getElementById('d7').innerText = 'bR';
+
+
+moves.queen(5, 'e', 'w');
