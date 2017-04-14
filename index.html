@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang='en'>
   <head>
-    <meta charset='utf-8'>>
+    <meta charset='utf-8'>
     <title>Chess Piece Moves</title>
     <script src='pieceMovementHelpers.js'></script>
 
     <link rel='stylesheet' type='text/css' href='styles.css'>
   </head>
   <body>
+    <div>Place a piece:</div>
+    <select id='selectPlayer'>
+      <option value='w'>White</option>
+      <option value='b'>Black</option>
+    </select>
+    <select id='selectPiece'> Piece
+      <option value='pawn'>Pawn</option>
+      <option value='rook'>Rook</option>
+      <option value='knight'>Knight</option>
+      <option value='bishop'>Bishop</option>
+      <option value='queen'>Queen</option>
+      <option value='king'>King</option>
+    </select>
+    <select id='selectColumn'> Column
+      <option value='a'>a</option>
+      <option value='b'>b</option>
+      <option value='c'>c</option>
+      <option value='d'>d</option>
+      <option value='e'>e</option>
+      <option value='f'>f</option>
+      <option value='g'>g</option>
+      <option value='h'>h</option>
+    </select>
+    <select id='selectRow'> Row
+      <option value='1'>1</option>      
+      <option value='2'>2</option>      
+      <option value='3'>3</option>      
+      <option value='4'>4</option>      
+      <option value='5'>5</option>      
+      <option value='6'>6</option>      
+      <option value='7'>7</option>      
+      <option value='8'>8</option>      
+    </select>
+    <br>
+    <br>
+    <br>
     <div id='board'></div>
     <script src='app.js'></script>
   </body>
