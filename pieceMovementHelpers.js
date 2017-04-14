@@ -256,6 +256,7 @@ var moves = {
   },
 
   king: function(x, y, player) {
+  	highlightPiece(x, y);
     var upOne = x + 1;
     var downOne = x - 1;
 
