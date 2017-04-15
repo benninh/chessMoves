@@ -10,19 +10,20 @@ var addPiece = function(piece, player, col, row) {
 
 	position.innerText = player + piece;
 	
+	// copies the board before the event handlers are added
 	currentBoard = currentBoard || document.getElementById('board').cloneNode(true);
 
 	position.onmouseover = function() {
-													console.log(' row: ', typeof row, ' col: ', typeof col, ' player: ', typeof player);
 													moves[piece](row, col, player);
 												}
 	
 	position.onmouseout = function() {
 													boardContainer.replaceChild(currentBoard, document.getElementById('board'));
-													// boardContainer.removeChild(document.getElementById('board'));
-													// boardContainer.appendChild(currentBoard);
 													addPiece(piece, player, col, row);
 												}
+
+	// copies the board after the event handlers are added
+	// ensures that the next time the currentboard is used to replace the board, the pieces have the correct event handler
 	currentBoard = document.getElementById('board').cloneNode(true);
 	
 	return;
