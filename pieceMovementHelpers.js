@@ -29,7 +29,7 @@ var kingMoves = function(x, y) {
 }
 
 var moves = {
-  rook: function(x, y, player) {
+  Rook: function(x, y, player) {
     // xy is current position
     highlightPiece(x, y);
     var temp = null;
@@ -87,7 +87,7 @@ var moves = {
     }
   },
 
-  bishop: function(x, y, player) {
+  Bishop: function(x, y, player) {
     highlightPiece(x, y);
     var temp = null;
 
@@ -152,12 +152,12 @@ var moves = {
     }
   },
 
-  queen: function(x , y, player) {
-    moves.rook(x, y, player);
-    moves.bishop(x, y, player);
+  Queen: function(x , y, player) {
+    moves.Rook(x, y, player);
+    moves.Bishop(x, y, player);
   },
 
-  knight: function(x, y, player) {
+  Knight: function(x, y, player) {
     highlightPiece(x, y);
     var upOne = x + 1;
     var downOne = x - 1;
@@ -255,7 +255,7 @@ var moves = {
     }
   },
 
-  king: function(x, y, player) {
+  King: function(x, y, player) {
   	highlightPiece(x, y);
     var upOne = x + 1;
     var downOne = x - 1;
@@ -286,7 +286,7 @@ var moves = {
     kingMoves(upOne, rightOne);
   },
 
-  pawn: function(x, y, player) {
+  Pawn: function(x, y, player) {
     highlightPiece(x, y);    
     // if player is black, highlight 1 down (decrement row)
       // if row is 7
