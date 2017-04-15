@@ -1,5 +1,6 @@
-var whitePlayer = {};
-var blackPlayer = {};
+var whitePlayerInCheck = false;
+var blackPlayerInCheck = false;
+
 var boardColors = {
                0: 'background-color: #E1CA96',
                1: 'background-color: #573D1C'
