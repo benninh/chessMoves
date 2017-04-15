@@ -16,17 +16,29 @@ var checkPieceColor = function(x, y) {
   return document.getElementById(y + x).innerText[0];
 };
 
-var kingMoves = function(x, y) {
-  if (withinBounds(x, y)) {
-    if (checkCellForPiece(upOne, currentColumn)) {
-      if (checkPieceColor(upOne, currentColumn) !== player) {
-        highlightMoves(upOne, currentColumn);
-      }
-    } else {
-      highlightMoves(upOne, currentColumn);
-    }
-  }
-}
+// var kingMoves = function(x, y) {
+//   if (withinBounds(x, y)) {
+//     if (checkCellForPiece(upOne, currentColumn)) {
+//       if (checkPieceColor(upOne, currentColumn) !== player) {
+//         highlightMoves(upOne, currentColumn);
+//       }
+//     } else {
+//       highlightMoves(upOne, currentColumn);
+//     }
+//   }
+// }
+
+var kingMoves = function(x, y, player) {
+						      if (withinBounds(x, y)) {
+						        if (checkCellForPiece(x, y)) {
+						          if (checkPieceColor(x, y) !== player) {
+						            highlightMoves(x, y);
+						          }
+						        } else {
+						          highlightMoves(x, y);
+						        }
+						      }
+						    }
 
 var moves = {
   Rook: function(x, y, player) {
@@ -264,38 +276,70 @@ var moves = {
     var leftOne = String.fromCharCode(y.charCodeAt(0) - 1);
     var rightOne = String.fromCharCode(y.charCodeAt(0) + 1);
 
-    var kingMoves = function(x, y) {
-      if (withinBounds(x, y)) {
-        if (checkCellForPiece(x, y)) {
-          if (checkPieceColor(x, y) !== player) {
-            highlightMoves(x, y);
-          }
-        } else {
-          highlightMoves(x, y);
-        }
-      }
-    }
+    // var kingMoves = function(x, y) {
+				// 		      if (withinBounds(x, y)) {
+				// 		        if (checkCellForPiece(x, y)) {
+				// 		          if (checkPieceColor(x, y) !== player) {
+				// 		            highlightMoves(x, y);
+				// 		          }
+				// 		        } else {
+				// 		          highlightMoves(x, y);
+				// 		        }
+				// 		      }
+				// 		    }
 
-    kingMoves(upOne, currentColumn);
-    kingMoves(upOne, leftOne);
-    kingMoves(x, leftOne);
-    kingMoves(downOne, leftOne);
-    kingMoves(downOne, currentColumn);
-    kingMoves(downOne, rightOne);
-    kingMoves(x, rightOne);
-    kingMoves(upOne, rightOne);
+
+    kingMoves(upOne, currentColumn, player);
+    kingMoves(upOne, leftOne, player);
+    kingMoves(x, leftOne, player);
+    kingMoves(downOne, leftOne, player);
+    kingMoves(downOne, currentColumn, player);
+    kingMoves(downOne, rightOne, player);
+    kingMoves(x, rightOne, player);
+    kingMoves(upOne, rightOne, player);
   },
 
   Pawn: function(x, y, player) {
-    highlightPiece(x, y);    
+    highlightPiece(x, y);
+
+    var currentColumn = String.fromCharCode(y.charCodeAt(0));
+		var leftOne = String.fromCharCode(y.charCodeAt(0) - 1);
+    var rightOne = String.fromCharCode(y.charCodeAt(0) + 1);
     // if player is black, highlight 1 down (decrement row)
-      // if row is 7
-      // highlight 1 extra down
-      // check lower left and lower right for potential piece kill
+    if (player === 'b') {
+    	var downOne = x - 1;
+    	if (withinBounds(downOne, currentColumn)) {
+    		kingMoves(downOne, currentColumn, player);
+    		if (x === 7) {
+    			kingMoves(downOne - 1, currentColumn, player);
+    		}
+    	}
+    	if (checkCellForPiece(downOne, leftOne) && checkPieceColor(downOne, leftOne) !== player) {
+    		kingMoves(downOne, leftOne);
+    	}
+    	if (checkCellForPiece(downOne, rightOne) && checkPieceColor(downOne, rightOne) !== player) {
+    		kingMoves(downOne, rightOne);
+    	}
+    }
     // if player is white, highlight 1 up (increment row)
       // if row is 2
       // highlight 1 extra up
       // check upper left and upper right for potential piece kill
+    if (player === 'w') {
+    	var upOne = x + 1;
+    	if (withinBounds(upOne, currentColumn)) {
+    		kingMoves(upOne, currentColumn, player);
+    		if (x === 2) {
+    			kingMoves(upOne + 1, currentColumn, player);
+    		}
+    	}
+    	if (checkCellForPiece(upOne, leftOne) && checkPieceColor(upOne, leftOne) !== player) {
+    		kingMoves(upOne, leftOne);
+    	}
+    	if (checkCellForPiece(upOne, rightOne) && checkPieceColor(upOne, rightOne) !== player) {
+    		kingMoves(upOne, rightOne);
+    	}
+    }
   }
 };
 
