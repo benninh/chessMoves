@@ -52,22 +52,22 @@ for (var i = 8; i >= 1; i--) {
 }
 
 // place pieces to test functionality
-document.getElementById('e5').innerText = 'wQ';
-document.getElementById('g5').innerText = 'bP';
-document.getElementById('b5').innerText = 'bP';
-document.getElementById('e2').innerText = 'bP';
-document.getElementById('e7').innerText = 'bP';
-document.getElementById('g7').innerText = 'bP';
-document.getElementById('g3').innerText = 'bP';
-document.getElementById('b2').innerText = 'bP';
-document.getElementById('c7').innerText = 'bP';
-document.getElementById('g6').innerText = 'wKn';
-document.getElementById('e4').innerText = 'wP';
-document.getElementById('c3').innerText = 'wP';
-document.getElementById('d7').innerText = 'bR';
-document.getElementById('c2').innerText = 'bK';
+// document.getElementById('d5').innerText = 'wQ';
+// document.getElementById('g5').innerText = 'bP';
+// document.getElementById('b5').innerText = 'bP';
+// document.getElementById('e2').innerText = 'bP';
+// document.getElementById('e7').innerText = 'bP';
+// document.getElementById('g7').innerText = 'bP';
+// document.getElementById('g3').innerText = 'bP';
+// document.getElementById('b2').innerText = 'bP';
+// document.getElementById('c7').innerText = 'bP';
+// document.getElementById('g6').innerText = 'wKn';
+// document.getElementById('e4').innerText = 'wP';
+// document.getElementById('c3').innerText = 'wP';
+// document.getElementById('d7').innerText = 'bR';
+// document.getElementById('e7').innerText = 'bK';
 
 
-// moves.queen(5, 'e', 'w');
+// moves.Queen(5, 'd', 'w');
 // moves.knight(6, 'g', 'w');
-moves.king(2, 'c', 'b');
+// moves.King(7, 'e', 'b');
