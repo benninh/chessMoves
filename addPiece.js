@@ -1,15 +1,3 @@
-// var currentBoard;
-var columns = {
-                1: 'a',
-                2: 'b',
-                3: 'c',
-                4: 'd',
-                5: 'e',
-                6: 'f',
-                7: 'g',
-                8: 'h',
-              };
-
 var addPiece = function(piece, player, col, row, currentBoard) {
 	var piece = piece || document.getElementById('selectPiece').value;
 	var player = player || document.getElementById('selectPlayer').value;
