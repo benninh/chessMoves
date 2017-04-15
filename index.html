@@ -3,6 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <title>Chess Piece Moves</title>
+    <script src='addPiece.js'></script>
     <script src='pieceMovementHelpers.js'></script>
 
     <link rel='stylesheet' type='text/css' href='styles.css'>
@@ -14,12 +15,12 @@
       <option value='b'>Black</option>
     </select>
     <select id='selectPiece'> Piece
-      <option value='pawn'>Pawn</option>
-      <option value='rook'>Rook</option>
-      <option value='knight'>Knight</option>
-      <option value='bishop'>Bishop</option>
-      <option value='queen'>Queen</option>
-      <option value='king'>King</option>
+      <option value='Pawn'>Pawn</option>
+      <option value='Rook'>Rook</option>
+      <option value='Knight'>Knight</option>
+      <option value='Bishop'>Bishop</option>
+      <option value='Queen'>Queen</option>
+      <option value='King'>King</option>
     </select>
     <select id='selectColumn'> Column
       <option value='a'>a</option>
@@ -41,10 +42,13 @@
       <option value='7'>7</option>      
       <option value='8'>8</option>      
     </select>
+    <button onClick='addPiece()'>add</button>  
     <br>
     <br>
     <br>
-    <div id='board'></div>
+    <div id='boardContainer'>
+      <div id='board'></div>
+    </div>
     <script src='app.js'></script>
   </body>
 </html>
