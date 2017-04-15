@@ -12,14 +12,6 @@ var addPiece = function(piece, player, col, row) {
 	
 	currentBoard = currentBoard || document.getElementById('board').cloneNode(true);
 
-	/*TEST*/
-	document.getElementById('e7').innerText = 'bKing';
-	var testrow = 7;
-	var testcol = 'e';
-	var testplayer = 'b';
-	moves.King(testrow, testcol, testplayer);
-	/*    */
-
 	position.onmouseover = function() {
 													console.log(' row: ', typeof row, ' col: ', typeof col, ' player: ', typeof player);
 													moves[piece](row, col, player);
