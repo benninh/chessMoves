@@ -16,18 +16,6 @@ var checkPieceColor = function(x, y) {
   return document.getElementById(y + x).innerText[0];
 };
 
-// var kingMoves = function(x, y) {
-//   if (withinBounds(x, y)) {
-//     if (checkCellForPiece(upOne, currentColumn)) {
-//       if (checkPieceColor(upOne, currentColumn) !== player) {
-//         highlightMoves(upOne, currentColumn);
-//       }
-//     } else {
-//       highlightMoves(upOne, currentColumn);
-//     }
-//   }
-// }
-
 var kingMoves = function(x, y, player) {
 						      if (withinBounds(x, y)) {
 						        if (checkCellForPiece(x, y)) {
@@ -276,19 +264,6 @@ var moves = {
     var leftOne = String.fromCharCode(y.charCodeAt(0) - 1);
     var rightOne = String.fromCharCode(y.charCodeAt(0) + 1);
 
-    // var kingMoves = function(x, y) {
-				// 		      if (withinBounds(x, y)) {
-				// 		        if (checkCellForPiece(x, y)) {
-				// 		          if (checkPieceColor(x, y) !== player) {
-				// 		            highlightMoves(x, y);
-				// 		          }
-				// 		        } else {
-				// 		          highlightMoves(x, y);
-				// 		        }
-				// 		      }
-				// 		    }
-
-
     kingMoves(upOne, currentColumn, player);
     kingMoves(upOne, leftOne, player);
     kingMoves(x, leftOne, player);
@@ -305,7 +280,8 @@ var moves = {
     var currentColumn = String.fromCharCode(y.charCodeAt(0));
 		var leftOne = String.fromCharCode(y.charCodeAt(0) - 1);
     var rightOne = String.fromCharCode(y.charCodeAt(0) + 1);
-    // if player is black, highlight 1 down (decrement row)
+
+    // handle black pawn
     if (player === 'b') {
     	var downOne = x - 1;
     	if (withinBounds(downOne, currentColumn)) {
@@ -314,6 +290,8 @@ var moves = {
     			kingMoves(downOne - 1, currentColumn, player);
     		}
     	}
+
+    	// check diagonal for potential kill
     	if (checkCellForPiece(downOne, leftOne) && checkPieceColor(downOne, leftOne) !== player) {
     		kingMoves(downOne, leftOne);
     	}
@@ -321,10 +299,8 @@ var moves = {
     		kingMoves(downOne, rightOne);
     	}
     }
-    // if player is white, highlight 1 up (increment row)
-      // if row is 2
-      // highlight 1 extra up
-      // check upper left and upper right for potential piece kill
+
+    // handle white pawn - same as black, just opposite direction
     if (player === 'w') {
     	var upOne = x + 1;
     	if (withinBounds(upOne, currentColumn)) {
