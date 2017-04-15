@@ -6,6 +6,26 @@ var addPiece = function(piece, player, col, row, currentBoard) {
 	var position = document.getElementById(col + row);
 	var boardContainer = document.getElementById('boardContainer');
 
+	if (piece === 'King') {
+		if (player === 'w') {
+			if (whiteKing.row === null) {
+				whiteKing.row = row;
+				whiteKing.col = col;
+			} else {
+				alert('White already has a king.');
+				return;
+			}
+		} else {
+			if (blackKing.row === null) {
+				blackKing.row = row;
+				blackKing.col = col;
+			} else {
+				alert('Black already has a king.');
+				return;
+			}
+		}
+	}
+
 	position.innerText = player + piece;
 	
 	position.onmouseover = function() {
