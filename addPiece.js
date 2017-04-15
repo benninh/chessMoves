@@ -1,6 +1,16 @@
-var currentBoard;
+// var currentBoard;
+var columns = {
+                1: 'a',
+                2: 'b',
+                3: 'c',
+                4: 'd',
+                5: 'e',
+                6: 'f',
+                7: 'g',
+                8: 'h',
+              };
 
-var addPiece = function(piece, player, col, row) {
+var addPiece = function(piece, player, col, row, currentBoard) {
 	var piece = piece || document.getElementById('selectPiece').value;
 	var player = player || document.getElementById('selectPlayer').value;
 	var col = col || document.getElementById('selectColumn').value;
@@ -10,21 +20,31 @@ var addPiece = function(piece, player, col, row) {
 
 	position.innerText = player + piece;
 	
-	// copies the board before the event handlers are added
-	currentBoard = currentBoard || document.getElementById('board').cloneNode(true);
-
 	position.onmouseover = function() {
 													moves[piece](row, col, player);
 												}
 	
 	position.onmouseout = function() {
-													boardContainer.replaceChild(currentBoard, document.getElementById('board'));
-													addPiece(piece, player, col, row);
+													for (var i = 8; i >= 1; i--) {
+													  if (i % 2) {
+													    colorTracker = 1;
+													  } else {
+													    colorTracker = 0;
+													  }
+
+													  for (var j = 1; j <= 8; j++) {
+													  	var column = document.getElementById(columns[j] + i);
+													    // set boardColors of the board
+													    if (colorTracker === 0) {
+													      column.setAttribute('style', boardColors[colorTracker]);
+													      colorTracker++;
+													    } else {
+													      column.setAttribute('style', boardColors[colorTracker]);
+													      colorTracker--;
+													    }
+													  }
+													}
 												}
 
-	// copies the board after the event handlers are added
-	// ensures that the next time the currentboard is used to replace the board, the pieces have the correct event handler
-	currentBoard = document.getElementById('board').cloneNode(true);
-	
 	return;
 }
