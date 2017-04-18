@@ -38,8 +38,14 @@ var moves = {
           highlightMoves(currentRow, y);
         }
         break;
-      } 
-      highlightMoves(currentRow, y);
+      }
+
+      // if king is in check AND current cell is not checking the king, don't highlight
+      // if (isKingInCheck(null, null, player) && checkCellForPiece(currentRow, y) && checkPieceColor(currentRow, y) !== player) {
+      // 	highlightMoves(currentRow, y);
+      if (!isKingInCheck(null, null, player)) {
+      	highlightMoves(currentRow, y);
+      }
       currentRow--;
     }
 
@@ -52,7 +58,9 @@ var moves = {
         }
         break;
       } 
-      highlightMoves(currentRow, y);
+      if (!isKingInCheck(null, null, player)) {
+      	highlightMoves(currentRow, y);
+      }
       currentRow++;
     }
 
@@ -65,7 +73,9 @@ var moves = {
         }
         break;
       }
-      highlightMoves(x, currentColumn);
+      if (!isKingInCheck(null, null, player)) {
+      	highlightMoves(x, currentColumn);
+      }
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) + 1);
     }
 
@@ -78,7 +88,9 @@ var moves = {
         }
         break;
       }
-      highlightMoves(x, currentColumn);
+      if (!isKingInCheck(null, null, player)) {
+      	highlightMoves(x, currentColumn);
+      }
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) - 1);
     }
   },
@@ -96,7 +108,10 @@ var moves = {
         }
         break;
       } 
-      highlightMoves(currentRow, currentColumn);
+
+      if (!isKingInCheck(null, null, player)) {
+      	highlightMoves(currentRow, currentColumn);
+      }
       currentRow++;
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) + 1);;
     }
@@ -111,7 +126,9 @@ var moves = {
         }
         break;
       } 
-      highlightMoves(currentRow, currentColumn);
+      if (!isKingInCheck(null, null, player)) {
+      	highlightMoves(currentRow, currentColumn);
+      }
       currentRow--;
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) + 1);;
     }
@@ -126,7 +143,9 @@ var moves = {
         }
         break;
       } 
-      highlightMoves(currentRow, currentColumn);
+      if (!isKingInCheck(null, null, player)) {
+      	highlightMoves(currentRow, currentColumn);
+      }
       currentRow--;
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) - 1);
     }
@@ -141,7 +160,9 @@ var moves = {
         }
         break;
       } 
-      highlightMoves(currentRow, currentColumn);
+      if (!isKingInCheck(null, null, player)) {
+      	highlightMoves(currentRow, currentColumn);
+      }
       currentRow++;
       currentColumn = String.fromCharCode(currentColumn.charCodeAt(0) - 1);;
     }
