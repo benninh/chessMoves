@@ -9,8 +9,10 @@ var addPiece = function(piece, player, col, row, currentBoard) {
 	if (piece === 'King') {
 		if (player === 'w') {
 			if (whiteKing.row === null) {
+			console.log('here');
 				whiteKing.row = row;
 				whiteKing.col = col;
+				console.log(whiteKing);
 			} else {
 				alert('White already has a king.');
 				return;
