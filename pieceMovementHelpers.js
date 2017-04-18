@@ -9,30 +9,26 @@ var highlightMoves = function(x, y) {
   document.getElementById(y + x).setAttribute('style', 'background-color: #D2D7DF');
 };
 
-var checkCellForPiece = function(x, y) {
-  return document.getElementById(y + x).innerText !== y + x;
-};
 var checkPieceColor = function(x, y) {
   return document.getElementById(y + x).innerText[0];
 };
 
 var kingMoves = function(x, y, player) {
-						      if (withinBounds(x, y)) {
-						        if (checkCellForPiece(x, y)) {
-						          if (checkPieceColor(x, y) !== player) {
-						            highlightMoves(x, y);
-						          }
-						        } else {
-						          highlightMoves(x, y);
-						        }
-						      }
-						    }
+  if (withinBounds(x, y)) {
+    if (checkCellForPiece(x, y)) {
+      if (checkPieceColor(x, y) !== player) {
+        highlightMoves(x, y);
+      }
+    } else {
+      highlightMoves(x, y);
+    }
+  }
+}
 
 var moves = {
   Rook: function(x, y, player) {
     // xy is current position
     highlightPiece(x, y);
-    var temp = null;
 
     // down
     var currentRow = x - 1;
@@ -89,7 +85,6 @@ var moves = {
 
   Bishop: function(x, y, player) {
     highlightPiece(x, y);
-    var temp = null;
 
     // upper right diagonal
     var currentRow = x + 1;
@@ -264,14 +259,32 @@ var moves = {
     var leftOne = String.fromCharCode(y.charCodeAt(0) - 1);
     var rightOne = String.fromCharCode(y.charCodeAt(0) + 1);
 
-    kingMoves(upOne, currentColumn, player);
-    kingMoves(upOne, leftOne, player);
-    kingMoves(x, leftOne, player);
-    kingMoves(downOne, leftOne, player);
-    kingMoves(downOne, currentColumn, player);
-    kingMoves(downOne, rightOne, player);
-    kingMoves(x, rightOne, player);
-    kingMoves(upOne, rightOne, player);
+    // straights
+    if (!isKingInCheck(upOne, currentColumn, player)) {
+    	kingMoves(upOne, currentColumn, player);    	
+    }
+    if (!isKingInCheck(downOne, currentColumn, player)) {
+    	kingMoves(downOne, currentColumn, player);
+    }
+    if (!isKingInCheck(x, leftOne, player)) {
+    	kingMoves(x, leftOne, player);
+    }
+    if (!isKingInCheck(x, rightOne, player)) {
+    	kingMoves(x, rightOne, player);
+    }
+    // diagonals
+    if (!isKingInCheck(upOne, leftOne, player)) {
+    	kingMoves(upOne, leftOne, player);
+    }
+    if (!isKingInCheck(upOne, rightOne, player)) {
+    	kingMoves(upOne, rightOne, player);
+    }
+    if (!isKingInCheck(downOne, leftOne, player)) {
+    	kingMoves(downOne, leftOne, player);
+    }
+    if (!isKingInCheck(downOne, rightOne, player)) {
+    	kingMoves(downOne, rightOne, player);
+    }
   },
 
   Pawn: function(x, y, player) {
